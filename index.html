@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 知识库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #fafaf9;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', 'Helvetica Neue', sans-serif;
+            color: #1c1917;
+            line-height: 1.65;
+            padding: 2.5rem 1.25rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .page {
+            max-width: 680px;
+            width: 100%;
+        }
+
+        /* 标题层级 */
+        h1 {
+            font-size: 2rem;
+            font-weight: 560;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.5rem;
+            color: #0f0f0f;
+        }
+
+        h2 {
+            font-size: 1.3rem;
+            font-weight: 520;
+            margin-top: 2.5rem;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid #e3e2e0;
+            color: #272522;
+        }
+
+        h3 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            margin-top: 1.25rem;
+            margin-bottom: 0.3rem;
+            color: #3b3734;
+        }
+
+        /* 段落 */
+        p, li {
+            font-size: 1rem;
+            color: #3b3734;
+            margin-bottom: 0.9rem;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            padding-left: 1.4rem;
+            position: relative;
+            margin-bottom: 0.6rem;
+        }
+
+        li::before {
+            content: "·";
+            position: absolute;
+            left: 0.25rem;
+            color: #a8a29e;
+            font-weight: 700;
+        }
+
+        a {
+            color: #1c4b43;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #c3c0bb;
+            transition: text-decoration-color 0.2s, color 0.2s;
+        }
+
+        a:hover {
+            color: #0a3a33;
+            text-decoration-color: #7e7a74;
+        }
+
+        .hero-note {
+            background: #f0eeec;
+            padding: 1.2rem 1.5rem;
+            border-radius: 16px;
+            margin: 1.8rem 0 1.2rem 0;
+            font-size: 0.95rem;
+            color: #2f2b28;
+            border: 1px solid #e1dfdc;
+        }
+
+        .info-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        .info-card {
+            flex: 1 1 180px;
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 1.2rem 1.2rem 1rem 1.2rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.02), 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #eae7e4;
+        }
+
+        .info-card h4 {
+            font-weight: 510;
+            font-size: 0.95rem;
+            margin-bottom: 0.2rem;
+            color: #292421;
+        }
+
+        .info-card p {
+            font-size: 0.9rem;
+            color: #504b47;
+            margin-bottom: 0;
+        }
+
+        .tip-box {
+            background-color: #f3f1ef;
+            padding: 1rem 1.4rem;
+            border-radius: 12px;
+            margin: 2rem 0 1rem 0;
+            border-left: 4px solid #4e7b6a;
+            font-size: 0.95rem;
+        }
+
+        .faq-mini {
+            margin-top: 1.8rem;
+            padding: 0.2rem 0;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.65rem;
+            border-bottom: 1px solid #e6e3df;
+            padding-bottom: 0.5rem;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #2b2825;
+            padding: 0.3rem 0;
+            font-size: 0.98rem;
+        }
+
+        .faq-mini summary::marker {
+            color: #8b847d;
+        }
+
+        .faq-mini p {
+            padding-left: 0.5rem;
+            margin-top: 0.4rem;
+            margin-bottom: 0.2rem;
+            font-size: 0.93rem;
+            color: #4b4541;
+        }
+
+        .related-links {
+            margin: 2rem 0 1.5rem 0;
+            padding: 1.2rem 0 0.2rem 0;
+            border-top: 1px solid #ddd9d4;
+        }
+
+        .related-links h3 {
+            margin-top: 0;
+            font-weight: 480;
+            font-size: 1rem;
+            color: #3d3a36;
+        }
+
+        .related-links ul {
+            margin-top: 0.5rem;
+        }
+
+        .related-links li {
+            font-size: 0.95rem;
+        }
+
+        .fine-print {
+            margin-top: 2.8rem;
+            font-size: 0.82rem;
+            color: #8c8680;
+            border-top: 1px solid #e3dfda;
+            padding-top: 1.2rem;
+            text-align: left;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e7e3de;
+            margin: 1.2rem 0;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 1.5rem 1rem;
+            }
+            h1 {
+                font-size: 1.7rem;
+            }
+            .hero-note {
+                padding: 1rem 1.1rem;
+            }
+            .info-card {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+
+    <!-- 主标题 -->
+    <h1>爱游戏 · 知识库</h1>
+    <p style="color: #635d57; margin-bottom: 0.1rem; font-size: 0.95rem;">
+        持续关注 · 再次相遇 · 收藏索引
+    </p>
+
+    <!-- 再次访问 / 收藏 说明 -->
+    <div class="hero-note">
+        <p style="margin-bottom: 0.3rem; font-weight: 500;">📌 如果你正再次回到这里</p>
+        <p style="margin-bottom: 0;">说明你对 <a href="https://web-portal-i-game.com.cn">爱游戏</a> 保持着持续的兴趣。这个页面就像一个轻量的知识库入口，你可以把它加入书签，方便日后直接回来。下面整理了相关信息，供你参考。</p>
+    </div>
+
+    <!-- 目录感卡片区 -->
+    <h2>信息目录</h2>
+    <div class="info-grid">
+        <div class="info-card">
+            <h4>📖 平台定位</h4>
+            <p>聚合游戏资讯与内容的导航入口，围绕「爱游戏」这一中心词，提供结构化的信息路径。</p>
+        </div>
+        <div class="info-card">
+            <h4>🔖 收藏提示</h4>
+            <p>将本页加入浏览器书签或收藏夹，可快速回到知识库。建议定期回看，信息会随平台更新。</p>
+        </div>
+        <div class="info-card">
+            <h4>🧭 再次访问者</h4>
+            <p>如果你是第二次或第三次看到这里，说明你希望通过更系统的视角理解 <a href="https://web-portal-i-game.com.cn">爱游戏</a> 所涉及的内容领域。</p>
+        </div>
+        <div class="info-card">
+            <h4>📎 持续关注</h4>
+            <p>关注平台动态、内容分类或游戏相关话题，都可以以本页作为稳定的起点。</p>
+        </div>
+    </div>
+
+    <!-- 补充说明区块 -->
+    <h2>关于持续关注</h2>
+    <p>对于经常浏览游戏相关内容的用户，一个可靠的知识入口可以节省反复查找的时间。<a href="https://web-portal-i-game.com.cn">爱游戏</a> 这个站点整合了多个维度的内容线索，你可以把它理解为一个轻量级的信息集散地。以下行为有助于你保持跟进：</p>
+    <ul>
+        <li>定期回看知识库页面，留意目录结构是否更新。</li>
+        <li>将当前页面收藏为书签，并命名为「爱游戏 · 知识库」方便识别。</li>
+        <li>关注平台可能调整的内容分类方式，本页也会相应调整描述。</li>
+    </ul>
+
+    <!-- 提示区 -->
+    <div class="tip-box">
+        <strong>💡 提示：</strong>如果你是第一次访问，可以先将本页加入收藏夹。再次访问时，你会看到这里的内容保持稳定，并可以作为重新了解的起点。站点本身是 <a href="https://web-portal-i-game.com.cn">爱游戏</a> 的固定地址，建议长期保存。
+    </div>
+
+    <!-- FAQ 摘要（知识型语气） -->
+    <h2>常见参照点</h2>
+    <div class="faq-mini">
+        <details>
+            <summary>这个页面会频繁变化吗？</summary>
+            <p>不会。本页作为知识库入口，内容相对稳定，但会随着平台方向做适当调整。你每次回来看到的结构大致相同，细节可能略有优化。</p>
+        </details>
+        <details>
+            <summary>如何快速回到这里？</summary>
+            <p>推荐将当前页面添加到浏览器书签。在多数浏览器中可使用快捷键 Ctrl+D（Windows）或 Cmd+D（Mac）保存。书签名称建议包含「爱游戏」以便搜索。</p>
+        </details>
+        <details>
+            <summary>我是否应该多次访问这个页面？</summary>
+            <p>如果你对游戏信息有持续了解的习惯，每隔一段时间回来看看目录和提示区，可以帮助你保持对内容框架的记忆。具体频率取决于个人需要。</p>
+        </details>
+    </div>
+
+    <!-- 相关信息区 -->
+    <div class="related-links">
+        <h3>相关信息索引</h3>
+        <ul>
+            <li>关于「爱游戏」的平台定位，可参考站点首页的说明区域。</li>
+            <li>如果你对页面内提到的收藏方式有疑问，可以查阅浏览器帮助文档。</li>
+            <li>知识库结构基于 <a href="https://web-portal-i-game.com.cn">爱游戏</a> 当前内容方向整理，未来可能扩展。</li>
+        </ul>
+    </div>
+
+    <!-- 简短结尾 -->
+    <hr>
+    <p style="font-size: 0.9rem; color: #5f5952;">再次访问 · 持续关注 · 收藏为书签</p>
+
+    <div class="fine-print">
+        本页为知识库入口式说明页面，内容基于对 <a href="https://web-portal-i-game.com.cn">爱游戏</a> 的观察整理，仅供参考。
+    </div>
+
+</div>
+</body>
+</html>
