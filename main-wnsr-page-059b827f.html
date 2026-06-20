@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>威尼斯人 · 资料索引与亮点一览</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: #f8fafc;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            color: #1a2a3a;
+            line-height: 1.7;
+            padding: 1.5rem;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            flex: 1;
+        }
+
+        /* 英雄区 – 资料整理基调 */
+        .hero {
+            background: linear-gradient(145deg, #e0f2fe 0%, #ccfbf1 100%);
+            border-radius: 2rem 2rem 2rem 2rem;
+            padding: 3rem 2rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 12px 28px -8px rgba(0, 80, 80, 0.08);
+            border: 1px solid rgba(20, 168, 150, 0.08);
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0b3b4a;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        .hero h1 small {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #3f7a7a;
+            background: rgba(255,255,255,0.6);
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            letter-spacing: 0;
+        }
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 720px;
+            color: #1f4a5a;
+            margin-bottom: 1.2rem;
+        }
+        .hero .tagline {
+            display: inline-block;
+            background: #ffffffcc;
+            backdrop-filter: blur(4px);
+            padding: 0.4rem 1.4rem;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            color: #0e5b5b;
+            border: 1px solid #8dd3c7;
+            margin-top: 0.4rem;
+        }
+
+        /* 网格卡片布局 */
+        .grid-2col {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.8rem;
+            margin: 3rem 0;
+        }
+        @media (min-width: 640px) {
+            .grid-2col {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 1.6rem;
+            padding: 1.8rem 1.5rem;
+            box-shadow: 0 4px 16px rgba(0, 40, 40, 0.03);
+            border: 1px solid #e2edec;
+            transition: box-shadow 0.2s ease, transform 0.15s ease;
+        }
+        .card:hover {
+            box-shadow: 0 10px 26px -6px rgba(16, 120, 110, 0.12);
+            transform: translateY(-2px);
+        }
+        .card h3 {
+            font-size: 1.35rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: #0b4b4b;
+            border-left: 4px solid #2ec4b6;
+            padding-left: 0.8rem;
+        }
+        .card p, .card li {
+            font-size: 0.98rem;
+            color: #23444a;
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0.2rem;
+            margin-top: 0.6rem;
+        }
+        .card li {
+            padding: 0.3rem 0 0.3rem 1.2rem;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="%2320b2aa"><circle cx="12" cy="12" r="6"/></svg>') left center / 10px no-repeat;
+        }
+
+        /* 场景 & 使用建议卡片 */
+        .scenario-box {
+            background: white;
+            border-radius: 1.6rem;
+            padding: 2rem 1.8rem;
+            margin: 2.5rem 0;
+            border: 1px solid #d9eae7;
+            box-shadow: 0 6px 18px -8px rgba(0,80,60,0.06);
+        }
+        .scenario-box h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0a4343;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        .scenario-box h2 span {
+            background: #2ec4b6;
+            width: 8px;
+            height: 28px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        .scenario-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.4rem;
+        }
+        .scenario-item {
+            flex: 1 1 180px;
+            background: #f1f9f8;
+            padding: 1rem 1.2rem;
+            border-radius: 1.2rem;
+            border: 1px solid #c2dfda;
+        }
+        .scenario-item strong {
+            display: block;
+            font-weight: 600;
+            color: #115e5e;
+            margin-bottom: 0.3rem;
+        }
+
+        /* 提示摘要 – 类似FAQ */
+        .hint-area {
+            background: #e6f5f2;
+            border-radius: 2rem;
+            padding: 2rem 1.8rem;
+            margin: 3rem 0 2rem;
+        }
+        .hint-area h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #054a4a;
+            margin-bottom: 1.5rem;
+        }
+        .hint-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.2rem;
+        }
+        @media (min-width: 540px) {
+            .hint-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+        .hint-card {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1rem 1.4rem;
+            box-shadow: 0 2px 8px rgba(0,40,40,0.02);
+        }
+        .hint-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #0d5f5f;
+            margin-bottom: 0.2rem;
+        }
+        .hint-card p {
+            font-size: 0.92rem;
+            color: #2f5151;
+        }
+
+        /* 链接和按钮 */
+        .link-embed {
+            color: #0e7a72;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px dotted #4fa89e;
+            transition: border 0.2s, color 0.2s;
+        }
+        .link-embed:hover {
+            color: #054f4f;
+            border-bottom: 1px solid #1b9a8a;
+        }
+
+        .btn-outline {
+            display: inline-block;
+            background: transparent;
+            border: 1.5px solid #38b2ac;
+            padding: 0.5rem 1.8rem;
+            border-radius: 60px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #115e5e;
+            transition: all 0.2s;
+            cursor: default;
+            pointer-events: none;
+            margin-top: 1rem;
+        }
+
+        .footer-note {
+            margin-top: 3rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #cde0dc;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #4e6e6b;
+        }
+
+        .mt-2 { margin-top: 1.2rem; }
+
+        /* 移动端微调 */
+        @media (max-width: 480px) {
+            .hero { padding: 2rem 1.2rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .card { padding: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!-- HERO: 资料整理角度 -->
+    <header class="hero">
+        <h1>
+            🗂️ 威尼斯人 · 信息索引
+            <small>资料整理</small>
+        </h1>
+        <p>
+            从碎片中提炼结构——威尼斯人相关的功能、场景与使用逻辑经过系统梳理，形成这份可查阅的摘要。
+            适合快速了解特点、常见用途以及如何更从容地利用这一平台。
+        </p>
+        <div class="tagline">📌 基于公开资料 · 客观整理</div>
+    </header>
+
+    <!-- 核心亮点网格 -->
+    <div class="grid-2col">
+        <div class="card">
+            <h3>📋 亮点速览</h3>
+            <ul>
+                <li>界面清晰，信息层级分明，便于检索</li>
+                <li>多模块整合，可匹配不同使用习惯</li>
+                <li>响应式适配，移动端与桌面体验一致</li>
+                <li>持续更新内容结构，保持索引效率</li>
+            </ul>
+        </div>
+        <div class="card">
+            <h3>📎 资料维度</h3>
+            <ul>
+                <li>功能概览与模块分布</li>
+                <li>常规使用路径参考</li>
+                <li>内容分类与标签体系</li>
+                <li>常见问题与提示摘要</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 使用建议 & 场景 -->
+    <div class="scenario-box">
+        <h2><span></span> 使用建议 · 常见场景</h2>
+        <div class="scenario-flex">
+            <div class="scenario-item">
+                <strong>📖 信息查阅</strong>
+                适合需要快速定位主题或功能板块的用户，导航逻辑偏实用。
+            </div>
+            <div class="scenario-item">
+                <strong>📱 移动阅览</strong>
+                卡片式布局与合理间距，在手机端阅读体验舒适，推荐轻度浏览。
+            </div>
+            <div class="scenario-item">
+                <strong>🔍 对比参考</strong>
+                多模块并列展示，适合对比不同内容类别或功能入口。
+            </div>
+            <div class="scenario-item">
+                <strong>🧩 日常索引</strong>
+                若你习惯将常用平台作为信息锚点，威尼斯人的结构可作为轻量起点。
+            </div>
+        </div>
+        <p class="mt-2" style="color: #2f5f5a; font-size:0.95rem;">
+            * 以上场景基于一般使用观察，具体体验因人而异。
+        </p>
+    </div>
+
+    <!-- 提示 / FAQ 摘要 -->
+    <div class="hint-area">
+        <h3>💡 常见提示摘要</h3>
+        <div class="hint-grid">
+            <div class="hint-card">
+                <h4>访问环境</h4>
+                <p>建议使用常用浏览器，保持网络稳定；如遇加载延迟可尝试刷新。</p>
+            </div>
+            <div class="hint-card">
+                <h4>内容更新</h4>
+                <p>页面与模块按周期迭代，部分功能入口位置可能微调，留意界面指引。</p>
+            </div>
+            <div class="hint-card">
+                <h4>信息筛选</h4>
+                <p>平台内容较丰富，可利用搜索或分类标签缩小范围，提高效率。</p>
+            </div>
+            <div class="hint-card">
+                <h4>账户相关</h4>
+                <p>若涉及个人设置，请通过官方路径操作，并注意保护登录信息。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 自然嵌入链接 + 可信但克制的访问说明 -->
+    <div style="background: #ffffff; border-radius: 1.8rem; padding: 1.8rem 1.8rem; margin: 2rem 0; border: 1px solid #d6e9e4;">
+        <p style="font-size: 1.05rem; margin-bottom: 0.8rem;">
+            若你想直接浏览该平台，可通过以下方式访问
+            <a href="https://main-wnsr.com" class="link-embed">威尼斯人</a>
+            （建议在熟悉网络环境下使用）。以下为几条克制但实用的说明：
+        </p>
+        <ul style="list-style: none; padding-left: 0.4rem; color: #1f4a4a;">
+            <li style="padding: 0.3rem 0;">✓ 域名指向明确，无多余跳转</li>
+            <li style="padding: 0.3rem 0;">✓ 页面加载后可依据导航自行探索</li>
+            <li style="padding: 0.3rem 0;">✓ 官方未声明地域限制，但请遵守当地法规</li>
+        </ul>
+        <div class="btn-outline">🔗 直达索引</div>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: #3e6f6b;">
+            <em>注：本页仅作信息整理，不构成任何引导或保证。</em>
+        </p>
+    </div>
+
+    <div class="footer-note">
+        <span>资料整理页面 · 基于公开信息 · 仅做索引参考</span><br>
+        <span style="opacity: 0.6; font-size: 0.8rem;">v1.0 · 保持客观</span>
+    </div>
+</div>
+</body>
+</html>
