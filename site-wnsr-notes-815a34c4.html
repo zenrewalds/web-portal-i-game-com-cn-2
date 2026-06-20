@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简明指南 · 威尼斯人</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background-color: #f7f5f0;
+            color: #2c2b28;
+            line-height: 1.7;
+        }
+
+        /* —— 深色头图 —— */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2e 0%, #1d2f44 100%);
+            color: #eae6de;
+            padding: 5rem 1.5rem 4rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(200, 170, 110, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 350;
+            letter-spacing: 0.08em;
+            margin-bottom: 1.2rem;
+            position: relative;
+            z-index: 1;
+        }
+        .hero p {
+            max-width: 680px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            opacity: 0.85;
+            position: relative;
+            z-index: 1;
+        }
+        .hero .accent-line {
+            display: inline-block;
+            width: 60px;
+            height: 2px;
+            background: #c4a97d;
+            margin: 1.4rem auto 0.8rem;
+        }
+
+        /* —— 正文浅色区 —— */
+        .container {
+            max-width: 880px;
+            margin: 0 auto;
+            padding: 2.8rem 1.8rem 4rem;
+        }
+
+        .lead {
+            font-size: 1.2rem;
+            margin-bottom: 2.2rem;
+            border-left: 4px solid #c4a97d;
+            padding-left: 1.4rem;
+            color: #3e3a34;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 400;
+            letter-spacing: 0.02em;
+            margin: 3rem 0 1.2rem;
+            color: #1d2f44;
+            border-bottom: 1px solid #ddd6c8;
+            padding-bottom: 0.4rem;
+        }
+
+        .feature-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem 2.2rem;
+            margin: 2.2rem 0 2.8rem;
+        }
+        .feature-item {
+            background: #ffffff;
+            padding: 1.5rem 1.4rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02), 0 1px 3px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .feature-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px -8px rgba(0,0,0,0.08);
+        }
+        .feature-item h3 {
+            font-size: 1.1rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+            color: #1d2f44;
+        }
+        .feature-item p {
+            font-size: 0.95rem;
+            color: #5b564e;
+            margin-top: 0.3rem;
+        }
+
+        .highlight-box {
+            background: #f1ede5;
+            border-radius: 16px;
+            padding: 1.8rem 2rem;
+            margin: 2.5rem 0;
+            border-left: 6px solid #b7a071;
+        }
+        .highlight-box p {
+            margin-bottom: 0.8rem;
+        }
+        .highlight-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-summary {
+            margin: 2.8rem 0 2rem;
+        }
+        .faq-summary details {
+            margin-bottom: 0.6rem;
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 0.8rem 1.2rem;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+        }
+        .faq-summary summary {
+            font-weight: 500;
+            cursor: pointer;
+            color: #1d2f44;
+            padding: 0.2rem 0;
+        }
+        .faq-summary details p {
+            margin-top: 0.6rem;
+            padding-left: 0.2rem;
+            color: #4b473f;
+            font-size: 0.95rem;
+        }
+
+        .closing {
+            margin-top: 3.2rem;
+            padding-top: 1.8rem;
+            border-top: 1px solid #ddd6c8;
+            font-style: normal;
+            color: #4b473f;
+        }
+        .closing a {
+            color: #1d2f44;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #c4a97d;
+            font-weight: 500;
+        }
+        .closing a:hover {
+            color: #8b734b;
+            text-decoration-color: #8b734b;
+        }
+
+        /* —— 强调色链接（正文中所有链接） —— */
+        a {
+            color: #9a7e4f;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-thickness: 1px;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: #6b5835;
+            text-decoration-color: #6b5835;
+        }
+
+        /* 响应式 */
+        @media (max-width: 640px) {
+            .hero h1 { font-size: 2rem; }
+            .hero { padding: 3.5rem 1.2rem 2.8rem; }
+            .feature-list { grid-template-columns: 1fr; gap: 1.2rem; }
+            .container { padding: 2rem 1rem 3rem; }
+            .highlight-box { padding: 1.4rem; }
+            .lead { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 深色头图 -->
+    <section class="hero">
+        <h1>面向初访者的简明指南</h1>
+        <div class="accent-line"></div>
+        <p>一座临水而立的综合度假城邦，融合了展览、住宿与休闲 —— 出发前，值得先了解它的轮廓与节奏。</p>
+    </section>
+
+    <!-- 浅色正文区 -->
+    <div class="container">
+
+        <p class="lead">
+            每个大型度假综合体的背后，都有一套清晰的动线与服务逻辑。对第一次前往的旅客来说，提前知晓场地划分、预约规则和交通细节，能让整段行程从容许多。
+        </p>
+
+        <!-- 特点列表：双栏卡片 -->
+        <h2 class="section-title">场地动线 · 四个基本区域</h2>
+        <div class="feature-list">
+            <div class="feature-item">
+                <h3>中央大堂与廊桥</h3>
+                <p>多数访客的起点。连接酒店落客区、票务柜台和主要通道，指示牌以中英双语标注方向。</p>
+            </div>
+            <div class="feature-item">
+                <h3>室内运河与购物回廊</h3>
+                <p>人工河道贯穿公共空间，两侧为零售店铺与轻食店。运河游船需提前在服务台预约时段。</p>
+            </div>
+            <div class="feature-item">
+                <h3>剧场与会展区域</h3>
+                <p>独立出入口，与主楼通过有顶走廊相连。演出日程通常在每月初公布，建议提早订座。</p>
+            </div>
+            <div class="feature-item">
+                <h3>高层酒店塔楼</h3>
+                <p>客房分布于两座塔楼，低区与高区电梯不互通。入住和退房可使用自助终端或人工柜台。</p>
+            </div>
+        </div>
+
+        <!-- 承接段落 + 提示框 -->
+        <div class="highlight-box">
+            <p><strong>📌 关于预约与排队</strong></p>
+            <p>部分体验项目（如运河游船、特定餐厅）采取预约制，现场排队名额有限。建议抵达后先通过酒店内信息屏或官方应用查询实时状态，再规划路线。</p>
+            <p>另外，度假城内设有免费接驳电瓶车，穿梭于南翼与北翼之间，每十五分钟一班，适合携带行李或行动不便的访客。</p>
+        </div>
+
+        <!-- 场景说明：从指南角度补充 -->
+        <h2 class="section-title">常见场景备忘</h2>
+        <p style="margin-bottom:1.2rem;">
+            如果你是当天往返而非住客，可考虑将行李寄存于礼宾部（收费服务），轻装逛展与用餐。若计划停留至晚间，建议随身携带一件薄外套 —— 室内公共区域冷气较强，室外步道则偶有风。
+        </p>
+        <p>
+            关于支付，度假城内大部分商户支持信用卡与移动支付，但少数小吃摊位和纪念品店仅接受现金或本地储值卡。兑换柜台位于主大堂东侧，营业至晚上十点。
+        </p>
+
+        <!-- FAQ 摘要 -->
+        <div class="faq-summary">
+            <h2 class="section-title">快速问答摘要</h2>
+            <details>
+                <summary>是否需要购买入场券？</summary>
+                <p>公共区域（购物、运河、酒店大堂）免费进入，仅展览、剧场及部分体验项目需单独购票或持有套餐凭证。</p>
+            </details>
+            <details>
+                <summary>附近有哪些公共交通？</summary>
+                <p>度假城设有巴士总站，停靠多条线路；出租车候客区位于主入口东侧。若自驾，停车场入口在环路北段，前两小时免费。</p>
+            </details>
+            <details>
+                <summary>语言沟通是否有障碍？</summary>
+                <p>服务人员多数可使用普通话及英语进行日常交流，信息手册与指示牌以中英双语呈现。</p>
+            </details>
+        </div>
+
+        <!-- 温和结尾 + 链接自然嵌入 -->
+        <div class="closing">
+            <p>
+                一座大型度假综合体的体验，往往取决于出发前的信息准备与现场的时间分配。了解场地分区、预约机制和交通细节，能帮你省去许多不必要的等待。如果你希望进一步查阅<strong>威尼斯人</strong>的官方说明、楼层地图或最新活动日程，可以访问其网站 <a href="https://site-wnsr.com">威尼斯人</a> 获取更详细的信息。祝愿旅途顺利，收获一段惬意而充实的停留。
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>
